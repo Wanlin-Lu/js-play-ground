@@ -1,44 +1,34 @@
 /* util */
 const { log } = console
 const todourl = 'https://jsonplaceholder.typicode.com/todos/2'
+const imgurl = `https://adom-wanlinlu-blog.oss-cn-hangzhou.aliyuncs.com/avatar.png`
 
 /* play-ground */
-/* function getData(url) {
-  return new Promise((resolve, reject) => {
-    $.ajax({
-      url,
-      success(data) {
-        resolve(data)
-      },
-      fail(error) {
-        reject(error)
-      }
-    })
-  })
-}
-
-getData(todourl).then(data => {
-  log(data)
-}) */
-
-function getData(url) {
-  return new Promise((resolve, reject) => {
-    const handler = function () {
-      if (this.readyState !== 4) { return }
-      if (this.status >= 200 && this.status < 300 || this.status == 304) {
-        resolve(this.response)
-      } else {
-        reject(new Error(this.statusText))
-      }
+const loadImg = url => {
+  const promise = new Promise((resolve, reject) => {
+    const img = document.createElement('img')
+    img.onload = () => {
+      resolve(img)
+    }
+    img.onerror = () => {
+      const err = new Error(`图片加载失败 ${url}`)
+      reject(err)
     }
 
-    let xhr = new XMLHttpRequest()
-    xhr.open("GET", url)
-    xhr.onreadystatechange = handler
-    xhr.response.Type = 'json'
-    xhr.setRequestHeader('Accept', 'application/json')
-    xhr.send(null)
+    img.src = url
   })
-}
 
-getData(todourl).then(data => { log(data)})
+  return promise
+} 
+
+loadImg(imgurl).then(img => {
+  log(img.width)
+}).catch(error => {
+  log(error)
+})
+
+loadImg('imgurl').then(img => {
+  log(img.width)
+}).catch(error => {
+  log(error)
+})
