@@ -2,20 +2,19 @@
 const { log } = console
 
 /* play-ground */
-Function.prototype.bind1 = function () {
-  const args = Array.prototype.slice.call(arguments)
-  const target = args.shift()
-  const self = this
-
-  return function () {
-    return self.apply(target,args)
+function createCache() {
+  const data = {}
+  return {
+    set(k, v) {
+      data[k] = v
+      log(k,' setted!')
+    },
+    get(k) {
+      return data[k]
+    }
   }
 }
 
-const laugh = () => 'laugh'
-
-const xiaoming = {}
-
-const xml = laugh.bind1(xiaoming)
-
-log(xml())
+const c = createCache()
+log(c.set('name', 'xiaoming'))
+log(c.get('name'))
