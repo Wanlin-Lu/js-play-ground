@@ -2,31 +2,44 @@
 const { log } = console
 
 /* play-ground */
-function deepClone(obj) {
-  if (typeof obj !== 'object' || typeof obj === null) {
-    return obj
+class People {
+  constructor(name) {
+    this.name = name;
   }
-
-  let result
-  if (obj instanceof Array) {
-    result = []
-  } else {
-    result = {}
+  walk() {
+    log(this.name,' walking!')
   }
-
-  for (let key in obj) {
-    if (obj.hasOwnProperty(key)) {  //[1,2,3].hasOwnProperty(1) //true
-      result[key] = deepClone(obj[key])
-    }
-  }
-
-  return result
 }
-let arr = [1, 3, 4]
-let arr1 = arr
-let arr2 = deepClone(arr)
-log(arr1)
-log(arr2)
-arr[0] = 1000
-log(arr1)
-log(arr2)
+
+class Student extends People {
+  constructor(name, number) {
+    super(name)
+    this.number = number
+  }
+  study() {
+    log(`${this.name} number is ${this.number}, is study!`)
+  }
+}
+
+const zhangsan = new People('zhangsan')
+log(zhangsan.walk())
+
+const xiaoming = new Student('xiaoming', 1000)
+log(xiaoming)
+log(xiaoming.study())
+log(xiaoming.walk())
+
+log(xiaoming.__proto__ === Student.prototype)
+log(zhangsan.__proto__ === People.prototype)
+log(Student.__proto__ === People)
+log(Student.prototype.__proto__ === People.prototype)
+
+xiaoming.__proto__.__proto__.sleep = function () {
+  console.log('sleeping!')
+}
+log(zhangsan.sleep())
+log(xiaoming.sleep())
+
+log(xiaoming instanceof Student)
+log(xiaoming instanceof People)
+log(xiaoming instanceof Object)
