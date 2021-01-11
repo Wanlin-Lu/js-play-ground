@@ -2,19 +2,45 @@
 const { log } = console
 
 /* play-ground */
-function createCache() {
-  const data = {}
-  return {
-    set(k, v) {
-      data[k] = v
-      log(k,' setted!')
-    },
-    get(k) {
-      return data[k]
-    }
-  }
-}
+/* let i, a
+for (i = 0; i < 10; i++) {
+  a = document.createElement('a')
+  a.innerHTML = i + '<br>'
+  a.addEventListener('click', function (e) {
+    e.preventDefault()
+    alert(i)
+  })
+  document.body.appendChild(a)
+} */
 
-const c = createCache()
-log(c.set('name', 'xiaoming'))
-log(c.get('name'))
+/* for (let i = 0; i < 10; i++) {
+  const a = document.createElement('a')
+  a.innerHTML = i + '<br>'
+  a.addEventListener('click', function (e) {
+    e.preventDefault()
+    alert(i)
+  })
+  document.body.appendChild(a)
+} */
+
+/* for (var i = 0; i < 10; i++) {
+  const a = document.createElement('a')
+  a.innerHTML = i + '<br>'
+  a.onclick = (function (i) {
+    return function () {
+      alert(i)
+    }
+  })(i)
+  document.body.appendChild(a)
+} */
+
+for (let i = 0; i < 10; i++) {
+  const a = document.createElement('a')
+  a.innerHTML = i + '<br>'
+  a.onclick = (function (i) {
+    return function () {
+      alert(i)
+    }
+  })(i)
+  document.body.appendChild(a)
+}
