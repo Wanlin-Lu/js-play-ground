@@ -2,50 +2,20 @@
 const { log } = console
 
 /* play-ground */
-class jQuery {
-  constructor(selector) {
-    const result = document.querySelectorAll(selector)
-    const length = result.length 
-    for (let i = 0; i < length; i++) {
-      this[i] = result[i]
-    }
-    this.length = length
-    this.selector = selector
-  }
+Function.prototype.bind1 = function () {
+  const args = Array.prototype.slice.call(arguments)
+  const target = args.shift()
+  const self = this
 
-  get(index) {
-    return this[index]
-  }
-
-  each(fn) {
-    for (let i = 0; i < this.length; i++) {
-      const elem = this[i]
-      fn(elem)
-    }
-  }
-
-  on(type, fn) {
-    return this.each(elem => {
-      elem.addEventListener(type, fn, false)
-    })
+  return function () {
+    return self.apply(target,args)
   }
 }
 
-jQuery.prototype.dialog = function (info) {
-  log(info)
-}
+const laugh = () => 'laugh'
 
-class myjQuery extends jQuery {
-  constructor(selector) {
-    super(selector)
-  }
+const xiaoming = {}
 
-  style(data) {
-    log(data)
-  }
-}
+const xml = laugh.bind1(xiaoming)
 
-const $p = new jQuery('p')
-log($p.get(1))
-$p.each(elem => console.log(elem.nodeName))
-$p.on('click', () => alert('click'))
+log(xml())
