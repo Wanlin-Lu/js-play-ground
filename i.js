@@ -1,46 +1,44 @@
 /* util */
 const { log } = console
+const todourl = 'https://jsonplaceholder.typicode.com/todos/2'
 
 /* play-ground */
-/* let i, a
-for (i = 0; i < 10; i++) {
-  a = document.createElement('a')
-  a.innerHTML = i + '<br>'
-  a.addEventListener('click', function (e) {
-    e.preventDefault()
-    alert(i)
+/* function getData(url) {
+  return new Promise((resolve, reject) => {
+    $.ajax({
+      url,
+      success(data) {
+        resolve(data)
+      },
+      fail(error) {
+        reject(error)
+      }
+    })
   })
-  document.body.appendChild(a)
-} */
-
-/* for (let i = 0; i < 10; i++) {
-  const a = document.createElement('a')
-  a.innerHTML = i + '<br>'
-  a.addEventListener('click', function (e) {
-    e.preventDefault()
-    alert(i)
-  })
-  document.body.appendChild(a)
-} */
-
-/* for (var i = 0; i < 10; i++) {
-  const a = document.createElement('a')
-  a.innerHTML = i + '<br>'
-  a.onclick = (function (i) {
-    return function () {
-      alert(i)
-    }
-  })(i)
-  document.body.appendChild(a)
-} */
-
-for (let i = 0; i < 10; i++) {
-  const a = document.createElement('a')
-  a.innerHTML = i + '<br>'
-  a.onclick = (function (i) {
-    return function () {
-      alert(i)
-    }
-  })(i)
-  document.body.appendChild(a)
 }
+
+getData(todourl).then(data => {
+  log(data)
+}) */
+
+function getData(url) {
+  return new Promise((resolve, reject) => {
+    const handler = function () {
+      if (this.readyState !== 4) { return }
+      if (this.status >= 200 && this.status < 300 || this.status == 304) {
+        resolve(this.response)
+      } else {
+        reject(new Error(this.statusText))
+      }
+    }
+
+    let xhr = new XMLHttpRequest()
+    xhr.open("GET", url)
+    xhr.onreadystatechange = handler
+    xhr.response.Type = 'json'
+    xhr.setRequestHeader('Accept', 'application/json')
+    xhr.send(null)
+  })
+}
+
+getData(todourl).then(data => { log(data)})
