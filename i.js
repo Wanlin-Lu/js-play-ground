@@ -4,31 +4,30 @@ const todourl = 'https://jsonplaceholder.typicode.com/todos/2'
 const imgurl = `https://adom-wanlinlu-blog.oss-cn-hangzhou.aliyuncs.com/avatar.png`
 
 /* play-ground */
-const loadImg = url => {
-  const promise = new Promise((resolve, reject) => {
-    const img = document.createElement('img')
-    img.onload = () => {
-      resolve(img)
-    }
-    img.onerror = () => {
-      const err = new Error(`图片加载失败 ${url}`)
-      reject(err)
-    }
+function multi(num) {
+  return new Promise(resolve => {
+    setTimeout(() => {
+      resolve(num * num)
+    }, 1000);
+  }) 
+}
 
-    img.src = url
+function test1() {
+  const arr = [1, 2, 3];
+  arr.forEach(async x => {
+    const res = await multi(x)
+    log(res)
   })
+}
 
-  return promise
-} 
+test1()
 
-loadImg(imgurl).then(img => {
-  log(img.width)
-}).catch(error => {
-  log(error)
-})
+async function test2() {
+  const arr = [1, 2, 3];
+  for (let x of arr) {
+    const res = await multi(x)
+    log(res)
+  }
+}
 
-loadImg('imgurl').then(img => {
-  log(img.width)
-}).catch(error => {
-  log(error)
-})
+test2()
