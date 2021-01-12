@@ -10,10 +10,18 @@ let todoUrls = [
 const imgurl = `https://adom-wanlinlu-blog.oss-cn-hangzhou.aliyuncs.com/avatar.png`
 
 /* play-ground */
-a = [1,2,3,4,5,6]
+function myInstanceof(left, right) {
+  if (typeof left !== 'object' || left === null) return false
 
-Array.prototype.random = function () {
-  return this.sort(() => Math.random() - 0.5)
+  let prototype = right.prototype
+
+  left = left.__proto__
+  
+  while (true) {
+    if (!left) return false;
+    if (left == prototype) return true;
+    left = left.__proto__
+  }
 }
 
-log(a.random())
+log(myInstanceof([],Array))
