@@ -5,6 +5,13 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Document</title>
   <script src="https://cdn.bootcdn.net/ajax/libs/jquery/3.5.1/jquery.js"></script>
+  <style>
+    #div1 {
+        border: 1px solid #ccc;
+        width: 200px;
+        height: 100px;
+    }
+  </style>
 </head>
 <body>
   <div id="root"></div>
@@ -17,7 +24,9 @@
       <li class="list">item 5</li>
     </div>
   </div>
-  <input type="text" id="target">
+  <div id="div1" draggable="true">可拖拽<div>
+
+  </div>
   <p>moment day life</p>
   <p>live on now</p>
   <script src="./i.js"></script>
