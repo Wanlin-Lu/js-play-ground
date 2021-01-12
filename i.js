@@ -10,29 +10,32 @@ let todoUrls = [
 const imgurl = `https://adom-wanlinlu-blog.oss-cn-hangzhou.aliyuncs.com/avatar.png`
 
 /* play-ground */
+const t = document.getElementById('target')
 
-function bindEvent(elem, type, selector, fn) {
-  if (fn == null) {
-    fn = selector
-    selector = null
-  }
+// t.addEventListener('input', e => {
+//   log(e.target)
+//   log(e.target.value)
+// })
 
-  elem.addEventListener(type, event => {
-    const target = event.target
-    if (selector) {
-      if (target.matches(selector)) {
-        fn.call(target, event)
-      }
-    } else {
-      fn.call(target, event)
-    }
+t.addEventListener(
+  'input',
+  debounce((e) => {
+    log(e.target)
+    log(e.target.value)
   })
+)
+
+function debounce(fn, delay = 500) {
+  let timer = null
+
+  return function () {
+    if (timer) {
+      clearTimeout(timer)
+    }
+    timer = setTimeout(() => {
+      fn.apply(this, arguments)
+      timer = null
+    },delay)
+  }
 }
-
-const pb = document.getElementById('pbox')
-const cb = document.getElementById('cbox')
-const items = document.getElementsByClassName('list')
-
-bindEvent(items[0], 'click', e => log('li clicked!'))
-bindEvent(pb, 'click', 'li', (e) => log('li clicked delegate'))
 
