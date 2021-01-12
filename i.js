@@ -4,14 +4,22 @@ const todourl = 'https://jsonplaceholder.typicode.com/todos/2'
 const imgurl = `https://adom-wanlinlu-blog.oss-cn-hangzhou.aliyuncs.com/avatar.png`
 
 /* play-ground */
-let num = 123412341234214.123
-
-function commafy(num) {
-  return num && num
-    .toString()
-    .replace(/(\d)(?=(\d{3})+\.)/g, function ($1, $2) {
-    return $2 + ','
-  })
+function func(a, b, c) {
+  return a + b + c;
 }
 
-log(commafy(num))
+function fun(a) {
+  return function (b) {
+    return function (c) {
+      return a + b + c;
+    }
+  }
+}
+
+const fun1 = a => b => c => {
+  return a + b + c
+}
+
+log(func(1, 2, 3))
+log(fun(1)(2)(3))
+log(fun1(1)(2)(3))
