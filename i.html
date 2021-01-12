@@ -6,25 +6,39 @@
   <title>Document</title>
   <script src="https://cdn.bootcdn.net/ajax/libs/jquery/3.5.1/jquery.js"></script>
   <style>
-    #div1 {
-        border: 1px solid #ccc;
-        width: 200px;
-        height: 100px;
+    #cbox {
+      display: flex;
+      flex-wrap: wrap;
+    }
+    #cbox>div {
+      padding: 2px;
+    }
+    .list {
+      width: 30vw;
+      height: 60px;
+      background-color: red;
     }
   </style>
 </head>
 <body>
   <div id="root"></div>
+
   <div id="pbox">
     <div id="cbox">
-      <li class="list">item 1</li>
-      <li class="list">item 2</li>
-      <li class="list">item 3</li>
-      <li class="list">item 4</li>
-      <li class="list">item 5</li>
+      <div><div class="list">item 1</div></div>
+      <div><div class="list">item 2</div></div>
+      <div><div class="list">item 3</div></div>
+      <div><div class="list">item 4</div></div>
+      <div><div class="list">item 5</div></div>
+      <div><div class="list">item 6</div></div>
+      <div><div class="list">item 1</div></div>
+      <div><div class="list">item 2</div></div>
+      <div><div class="list">item 3</div></div>
+      <div><div class="list">item 4</div></div>
+      <div><div class="list">item 5</div></div>
+      <div><div class="list">item 6</div></div>
     </div>
   </div>
-  <div id="div1" draggable="true">可拖拽<div>
 
   </div>
   <p>moment day life</p>
