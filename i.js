@@ -4,22 +4,21 @@ const todourl = 'https://jsonplaceholder.typicode.com/todos/2'
 const imgurl = `https://adom-wanlinlu-blog.oss-cn-hangzhou.aliyuncs.com/avatar.png`
 
 /* play-ground */
-function func(a, b, c) {
-  return a + b + c;
+const queuedObservers = new Set()
+
+const observe = fn => queuedObservers.add(fn)
+const observable = obj => new Proxy(obj, { set });
+
+function set(target, key, value, receiver) {
+  const result = Reflect.set(target, key, value, receiver)
+  queuedObservers.forEach(observer => observer())
+  return result
 }
 
-function fun(a) {
-  return function (b) {
-    return function (c) {
-      return a + b + c;
-    }
-  }
-}
+let obj = {}
+let print = function () { log('printed') }
 
-const fun1 = a => b => c => {
-  return a + b + c
-}
+observe(print)
+let obj1 = observable(obj)
 
-log(func(1, 2, 3))
-log(fun(1)(2)(3))
-log(fun1(1)(2)(3))
+obj1.name = 'asang'
