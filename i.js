@@ -10,48 +10,10 @@ let todoUrls = [
 const imgurl = `https://adom-wanlinlu-blog.oss-cn-hangzhou.aliyuncs.com/avatar.png`
 
 /* play-ground */
-inner = 'window'
+a = [1,2,3,4,5,6]
 
-function say() {
-  console.log(inner)
-  console.log(this.inner)
+Array.prototype.random = function () {
+  return this.sort(() => Math.random() - 0.5)
 }
 
-var obj1 = (function () {
-  var inner = '1-1'
-  return {
-    inner: '1-2',
-    say: function () {
-      console.log(inner)
-      console.log(this.inner)
-    },
-  }
-})()
-
-var obj2 = (function () {
-  var inner = '2-1'
-  return {
-    inner: '2-2',
-    say: function () {
-      console.log(inner)
-      console.log(this.inner)
-    },
-  }
-})()
-
-say()
-// window
-// window
-obj1.say()
-// 1-1
-// 1-2
-obj2.say()
-// 2-1
-// 2-2
-obj1.say = say
-obj1.say()
-// window
-obj1.say = obj2.say
-obj1.say() 
-// 2-1
-// 1-2
+log(a.random())
