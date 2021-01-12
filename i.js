@@ -10,33 +10,48 @@ let todoUrls = [
 const imgurl = `https://adom-wanlinlu-blog.oss-cn-hangzhou.aliyuncs.com/avatar.png`
 
 /* play-ground */
-const t = document.getElementById('div1')
+inner = 'window'
 
-t.addEventListener('trag', e => {
-  // log(e)
-  log(e.clientX,e.clientY)
-})
-
-t.addEventListener(
-  'drag',
-  throttle(function(e) {
-    log(e)
-    log(e.clientX, e.clientY)
-  },1000)
-)
-
-function throttle(fn, delay) {
-  let timer = null
-  
-  return function () {
-    if (timer) {
-      return
-    }
-
-    timer = setTimeout(() => {
-      fn.apply(this, arguments)
-      timer = null
-    }, delay)
-  }
+function say() {
+  console.log(inner)
+  console.log(this.inner)
 }
 
+var obj1 = (function () {
+  var inner = '1-1'
+  return {
+    inner: '1-2',
+    say: function () {
+      console.log(inner)
+      console.log(this.inner)
+    },
+  }
+})()
+
+var obj2 = (function () {
+  var inner = '2-1'
+  return {
+    inner: '2-2',
+    say: function () {
+      console.log(inner)
+      console.log(this.inner)
+    },
+  }
+})()
+
+say()
+// window
+// window
+obj1.say()
+// 1-1
+// 1-2
+obj2.say()
+// 2-1
+// 2-2
+obj1.say = say
+obj1.say()
+// window
+obj1.say = obj2.say
+obj1.say() 
+// 2-1
+// 1-2
