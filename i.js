@@ -10,41 +10,27 @@ let todoUrls = [
 const imgurl = `https://adom-wanlinlu-blog.oss-cn-hangzhou.aliyuncs.com/avatar.png`
 
 /* play-ground */
-let arr = ['c', 'f', 'h', 'o']
-let str = 'ab4de8glijklmn9'
+var bip = document.getElementById('bibao')
+var list = bip.getElementsByTagName('li')
 
-var func = (function () {
-  var count = 0
-  return function () {
-    return arr[count++];
+/* for (var i = 0; i < list.length; i++) {
+  list[i].onclick = (function (i) {
+
+    return function () {
+      alert(i + 1)
+    }
+
+  })(i)
+} */
+
+for (var i = 0; i < list.length; i++) {
+  list[i].onclick = function () {
+    alert(i+1)
   }
-})()
-let str1 = str.replace(/\d/g, func)
-log(str1)
+}
 
-let str2 = str.replace(/\d/g, function () {
-  var count = 0
-  return function () {
-    return arr[count++]
+/* for (let i = 0; i < list.length; i++) {
+  list[i].onclick = function () {
+    alert(i+1)
   }
-})
-log(str2) // wrong
-
-let str3 = str.replace(/\d/g, (function () {
-  var count = 0
-  return function () {
-    return arr[count++]
-  }
-})())
-log(str3) // yes
-
-// function replaceInput() {
-//   let str4
-//   for (let i of arr) {
-//     str.replace(/\d/, arr[i])
-//   }
-//   return str4
-// }
-// replaceInput()
-// log(str4)
-// log(str)
+} */
