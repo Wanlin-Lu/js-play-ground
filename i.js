@@ -10,24 +10,41 @@ let todoUrls = [
 const imgurl = `https://adom-wanlinlu-blog.oss-cn-hangzhou.aliyuncs.com/avatar.png`
 
 /* play-ground */
-// let arr = [1, 2, 3]
-// log(arr)
-// arr.map(i => i + 2)
-// let arr1 = arr.map((i) => i + 2)
-// log(arr)
-// log('arr1',arr1)
+let arr = ['c', 'f', 'h', 'o']
+let str = 'ab4de8glijklmn9'
 
-// let arr2 = []
-// arr.map(i => arr2.push(i + 2))
-// log(arr2)
+var func = (function () {
+  var count = 0
+  return function () {
+    return arr[count++];
+  }
+})()
+let str1 = str.replace(/\d/g, func)
+log(str1)
 
-let arr = [{a:2,b:3}, {a:2,b:3}, {a:2,b:3}]
-log(arr)
-arr.map((i) => i.a + 2)
-let arr3 = arr.map((i) => ({ ...i, a: i.a + 2 }))
-log(arr)
-log('arr3',arr3)
+let str2 = str.replace(/\d/g, function () {
+  var count = 0
+  return function () {
+    return arr[count++]
+  }
+})
+log(str2) // wrong
 
-let arr4 = []
-arr.map((i) => arr4.push({...i,a: i.a + 2}))
-log(arr4)
+let str3 = str.replace(/\d/g, (function () {
+  var count = 0
+  return function () {
+    return arr[count++]
+  }
+})())
+log(str3) // yes
+
+// function replaceInput() {
+//   let str4
+//   for (let i of arr) {
+//     str.replace(/\d/, arr[i])
+//   }
+//   return str4
+// }
+// replaceInput()
+// log(str4)
+// log(str)
