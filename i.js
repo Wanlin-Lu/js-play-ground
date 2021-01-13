@@ -10,13 +10,20 @@ let todoUrls = [
 const imgurl = `https://adom-wanlinlu-blog.oss-cn-hangzhou.aliyuncs.com/avatar.png`
 
 /* play-ground */
-const styleSheetList = document.styleSheets
-const cssRules = ss[0].cssRules
-const cssText = cssRules[0].cssText
-const cssSelectorText = cssRules[0].selectorText
+/* let arr = [1, 2, 3]
+log(arr)
+arr.forEach(i => i + 2)
+log(arr)
 
-log(styleSheetList)
-log(ss[0])
-log(cssRules)
-log(cssText)
-log(cssSelectorText)
+let arr1 = []
+arr.forEach(i => arr1.push(i + 2))
+log(arr1) */
+
+let arr = [{a:2,b:3}, {a:2,b:3}, {a:2,b:3}]
+log(arr)
+arr.forEach((i) => i.a + 2)
+log(arr)
+
+let arr1 = []
+arr.forEach((i) => arr1.push({...i,a: i.a + 2}))
+log(arr1)
