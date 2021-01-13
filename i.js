@@ -10,18 +10,13 @@ let todoUrls = [
 const imgurl = `https://adom-wanlinlu-blog.oss-cn-hangzhou.aliyuncs.com/avatar.png`
 
 /* play-ground */
-function myInstanceof(left, right) {
-  if (typeof left !== 'object' || left === null) return false
+const styleSheetList = document.styleSheets
+const cssRules = ss[0].cssRules
+const cssText = cssRules[0].cssText
+const cssSelectorText = cssRules[0].selectorText
 
-  let prototype = right.prototype
-
-  left = left.__proto__
-  
-  while (true) {
-    if (!left) return false;
-    if (left == prototype) return true;
-    left = left.__proto__
-  }
-}
-
-log(myInstanceof([],Array))
+log(styleSheetList)
+log(ss[0])
+log(cssRules)
+log(cssText)
+log(cssSelectorText)
