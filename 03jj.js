@@ -28,6 +28,21 @@ arr1[0] = 1000
 arr2[1] = 2000
 log(arr) //[1000,2,3] */
 
+/* myInstanceof */
+/* function myInstanceof(left, right) {
+  if (typeof left !== 'object' || left === null) return false
+  
+  let prototype = right.prototype
+  
+  while (true) {
+    left = left.__proto__
+    if (!left) return false
+    if (left === prototype) return true
+  }
+}
+
+log(myInstanceof([1,2],Array)) */
+
 /* 函数进阶 */
 /* 变量作用域进阶 */
 /* 原型进阶 */
