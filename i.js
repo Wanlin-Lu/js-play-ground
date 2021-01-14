@@ -331,7 +331,7 @@ getData(todourl).then(data => log(data)) */
 getData(todourl).then(data => log(data)) */
 
 /* promise 异步加载图片 */
-function loadImgAsync(url) {
+/* function loadImgAsync(url) {
   const promise = new Promise((resolve, reject) => {
     const img = document.createElement('img')
     img.onload = () => {
@@ -354,10 +354,35 @@ loadImgAsync('imgurl').then(img => {
   log(img.width)
 }).catch(err => {
   log(err)
-})
+}) */
 
 /* Generator */
 
-/* async */
+/* async/await */
+function loadImgAsync(url) {
+  const promise = new Promise((resolve, reject) => {
+    const img = document.createElement('img')
+    img.onload = () => {
+      resolve(img)
+    }
+    img.onerror = () => {
+      const err = new Error(`图片加载失败：${url}`)
+      reject(err)
+    }
+    img.src = url
+  })
+  return promise
+}
+
+(async function () {
+  try {
+    const img = await loadImgAsync(imgurl)
+    log(img.width)
+    const img1 = await loadImgAsync(imgurl+';')
+    log(img1.height)
+  } catch (err) {
+    console.error(err)
+  }
+})()
 
 /* play-ground */
