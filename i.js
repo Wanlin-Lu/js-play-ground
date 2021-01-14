@@ -127,7 +127,7 @@ objSmile() */
 
 /* 闭包场景 */
 /* 闭包隐藏数据，只提供API */
-function createCache() {
+/* function createCache() {
   const data = {}
   return {
     set: function (key, val) {
@@ -140,7 +140,53 @@ function createCache() {
 }
 const c = createCache()
 c.set('number', 10000)
-log(c.get('number'))
+log(c.get('number')) */
+
+/* 闭包循环产生，记录循环词法环境中的i */
+/* let i, a
+for (i = 0; i < 10; i++) {
+  a = document.createElement('a')
+  a.innerHTML = i + '<br>'
+  a.addEventListener('click', function (e) {
+    e.preventDefault()
+    alert(i)
+  })
+  document.body.appendChild(a)
+} */
+
+/* for (let i = 0; i < 10; i++) {
+  const a = document.createElement('a')
+  a.innerHTML = i + '<br>'
+  a.addEventListener('click', function (e) {
+    e.preventDefault()
+    alert(i)
+  })
+  document.body.appendChild(a)
+} */
+
+/* for (var i = 0; i < 10; i++) {
+  const a = document.createElement('a')
+  a.innerHTML = i + '<br>'
+  a.onclick = (function(i) {
+    // e.preventDefault()
+    alert(i)
+  })(i)
+  document.body.appendChild(a)
+} */
+
+/* for (var i = 0; i < 10; i++) {
+  const a = document.createElement('a')
+  a.innerHTML = i + '<br>'
+  a.onclick = (function (i) {
+    // 这是重点
+    return function () {
+      alert(i)
+    }
+  })(i)
+  document.body.appendChild(a)
+}  */
+
+
 
 /* 原型进阶 */
 /* 原型链实例 */
@@ -244,6 +290,21 @@ $p.on('click', () => alert('click'))  */
 /* Proxy & Reflect */
 
 /* Promise */
+/* promise 包装Ajax */
+/* function getData(url) {
+  return new Promise((resolve, reject) => {
+    $.ajax({
+      url,
+      success(data) {
+        resolve(data)
+      },
+      fail(error) {
+        reject(error)
+      },
+    })
+  })
+}
+getData(todourl).then(data => log(data)) */
 
 /* Generator */
 
