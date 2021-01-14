@@ -81,6 +81,7 @@ log(arr) //[1000,2,3] */
 log(myInstanceof([1,2],Array)) */
 
 /* 函数进阶 */
+
 /* 变量作用域进阶 */
 /* this -> 箭头函数 */
 /* const zhangsan = {
@@ -105,6 +106,24 @@ log(myInstanceof([1,2],Array)) */
 zhangsan.sayHi()
 zhangsan.wait()
 zhangsan.see() */
+
+/* 手写 bind */
+Function.prototype.bind1 = function () {
+  const args = Array.prototype.slice.call(arguments)
+
+  const target = args.shift()
+  const self = this
+
+  return function () {
+    return self.apply(target,args)
+  }
+}
+
+let obj = {}
+let smile = (info) => log(info)
+
+let objSmile = smile.bind1(obj, 'lovely day!')
+objSmile()
 
 /* 原型进阶 */
 /* 手写jQuery */
