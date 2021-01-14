@@ -494,5 +494,21 @@ setTimeout(() => {
   alert('定时器回调函数执行，意味着第二次call stack，就能看到dom了。')
 }); */
 
+/* 微任务/宏任务/DOM渲染 */
+const $p1 = $('<p>一段文字</p>')
+const $p2 = $('<p>一段文字</p>')
+const $p3 = $('<p>一段文字</p>')
+$('#root').append($p1).append($p2).append($p3)
+
+Promise.resolve().then(() => {
+  const length = $('#root').children().length
+  alert(`微任务 完成，${length}`)
+})
+
+setTimeout(() => {
+  const length = $('#root').children().length
+  alert(`宏任务 完成，${length}`)
+}) 
+
 
 /* play-ground */
