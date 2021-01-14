@@ -7,7 +7,7 @@ let todoUrls = [
   'https://jsonplaceholder.typicode.com/todos/3',
   'https://jsonplaceholder.typicode.com/todos/4',
 ]
-const imgurl = `https://adom-wanlinlu-blog.oss-cn-hangzhou.aliyuncs.com/avatar.png`
+const imgurl = `https://adom-wanlinlu-blog.oss-cn-hangzhou.aliyuncs.com/avatar.png`;
 
 /*
  *js语言基础
@@ -359,7 +359,8 @@ loadImgAsync('imgurl').then(img => {
 /* Generator */
 
 /* async/await */
-function loadImgAsync(url) {
+/* async/await 调用 promise-异步加载图片 */
+/* function loadImgAsync(url) {
   const promise = new Promise((resolve, reject) => {
     const img = document.createElement('img')
     img.onload = () => {
@@ -383,6 +384,27 @@ function loadImgAsync(url) {
   } catch (err) {
     console.error(err)
   }
-})()
+})() */
+
+/* async/await ---> await */
+/* async function fun() {
+  const p1 = Promise.resolve(100)
+  const res = await p1
+  log(res)
+}
+fun() */
+
+/* (async function() {
+  const p1 = Promise.resolve(100)
+  const res = await p1
+  log(res)
+})() */
+
+/* (async function () {
+  const p1 = new Promise(() => { })
+  await p1
+  log('p1',p1)
+})() */
+
 
 /* play-ground */
