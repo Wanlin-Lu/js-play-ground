@@ -306,6 +306,30 @@ $p.on('click', () => alert('click'))  */
 }
 getData(todourl).then(data => log(data)) */
 
+/* promise 包装xhr */
+function getData(url) {
+  const promise = new Promise((resolve, reject) => {
+    const handler = function () {
+      if (this.readyState !== 4) return 
+      if (this.status >= 200 && this.status < 300 || this.status == 304) {
+        resolve(this.response)
+      } else {
+        reject(new Error(this.statusText))
+      }
+    }
+
+    let xhr = new XMLHttpRequest()
+    xhr.open('GET',url)
+    xhr.onreadystatechange = handler
+    xhr.responseType = 'json'
+    xhr.setRequestHeader('Accept', 'application/json')
+    xhr.send(null)
+  })
+  return promise
+}
+
+getData(todourl).then(data => log(data))
+
 /* Generator */
 
 /* async */
