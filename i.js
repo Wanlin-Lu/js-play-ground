@@ -286,8 +286,41 @@ $p.each((elem) => log(elem.nodeName))
 $p.on('click', () => alert('click'))  */
 
 /* 变量的解构赋值 */
-/* Iterator(遍历器)和for-of循环 */
-/* Proxy & Reflect */
+
+
+/**
+ * ! Iterator(遍历器)和for-of循环
+ */
+/* for-of vs forEach */
+/* function muti(num) {
+  return new Promise((resolve, reject) => {
+    setTimeout(() => {
+      resolve(num * num)
+    }, 1000)
+  })
+}
+function test1() {
+  let arr = [1, 2, 3]
+  arr.forEach(async x => {
+    const res = await muti(x)
+    log(res)
+  })
+}
+async function test2() {
+  let arr = [1, 2, 3]
+  for (let v of arr) {
+    const res = await muti(v)
+    log(res)
+  }
+}
+// test1()
+test2() */
+
+
+
+/**
+ * ! Proxy & Reflect
+ */
 
 /* Promise */
 /* promise 包装Ajax */
@@ -330,7 +363,10 @@ getData(todourl).then(data => log(data)) */
 
 getData(todourl).then(data => log(data)) */
 
-/* promise 异步加载图片 */
+/**
+ * !NUM 2 
+ * promise 异步加载图片
+ */
 /* function loadImgAsync(url) {
   const promise = new Promise((resolve, reject) => {
     const img = document.createElement('img')
@@ -356,7 +392,13 @@ loadImgAsync('imgurl').then(img => {
   log(err)
 }) */
 
-/* Generator */
+/**
+ * ! Generator
+ * * 异步状态机
+ * TODO 继续学习
+ * @param todourls
+ * @param imgurl
+ */
 
 /* async/await */
 /* async/await 调用 promise-异步加载图片 */
