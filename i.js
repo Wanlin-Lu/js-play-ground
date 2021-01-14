@@ -406,5 +406,17 @@ fun() */
   log('p1',p1)
 })() */
 
+/* async/await === 执行顺序题 */
+async function async1() {
+  log('async1 start')
+  await async2()
+  log('async1 end')
+}
+async function async2() {
+  log('async2')
+}
+log('script start')
+async1()
+log('script end')
 
 /* play-ground */
