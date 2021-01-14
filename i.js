@@ -125,9 +125,26 @@ let smile = (info) => log(info)
 let objSmile = smile.bind1(obj, 'lovely day!')
 objSmile() */
 
+/* 闭包场景 */
+/* 闭包隐藏数据，只提供API */
+function createCache() {
+  const data = {}
+  return {
+    set: function (key, val) {
+      data[key] = val
+    },
+    get: function (key) {
+      return data[key]
+    }
+  }
+}
+const c = createCache()
+c.set('number', 10000)
+log(c.get('number'))
+
 /* 原型进阶 */
 /* 原型链实例 */
-class People {
+/* class People {
   constructor(name) {
     this.name = name;
   }
@@ -169,7 +186,7 @@ log(xiaoming.sleep())
 
 log(xiaoming instanceof Student)
 log(xiaoming instanceof People)
-log(xiaoming instanceof Object)
+log(xiaoming instanceof Object) */
 
 /* 手写jQuery */
 /* class jQuery {
