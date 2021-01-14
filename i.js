@@ -400,7 +400,9 @@ loadImgAsync('imgurl').then(img => {
  * @param imgurl
  */
 
-/* async/await */
+/**
+ * ! async/await
+ */
 /* async/await 调用 promise-异步加载图片 */
 /* function loadImgAsync(url) {
   const promise = new Promise((resolve, reject) => {
@@ -476,6 +478,21 @@ async function async3 () {
 }
 console.log('script start') 
 async1()
-console.log('script end') */    
+console.log('script end') */
+
+/**
+ * ! event-loop
+ */
+/* event-loop 和DOM 渲染的关系 */
+/* const $p1 = $('<p>一段文字</p>')
+const $p2 = $('<p>一段文字</p>')
+const $p3 = $('<p>一段文字</p>')
+$('#root').append($p1).append($p2).append($p3)
+log('length:', $('#root').children().length)
+alert('本次callStack结束，DOM已经更新，但是尚未渲染')
+setTimeout(() => {
+  alert('定时器回调函数执行，意味着第二次call stack，就能看到dom了。')
+}); */
+
 
 /* play-ground */
