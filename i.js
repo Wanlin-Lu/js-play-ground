@@ -407,7 +407,7 @@ fun() */
 })() */
 
 /* async/await === 执行顺序题 */
-async function async1() {
+/* async function async1() {
   log('async1 start')
   await async2()
   log('async1 end')
@@ -417,6 +417,23 @@ async function async2() {
 }
 log('script start')
 async1()
-log('script end')
+log('script end') */
+
+/* async function async1 () {
+  console.log('async1 start') 
+  await async2()
+  console.log('async1 end')   
+  await async3()
+  console.log('asyn1 end 2')  
+}
+async function async2 () {
+  console.log('async2')   
+}
+async function async3 () {
+	console.log('async3')   
+}
+console.log('script start') 
+async1()
+console.log('script end') */    
 
 /* play-ground */
