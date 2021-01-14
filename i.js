@@ -307,7 +307,7 @@ $p.on('click', () => alert('click'))  */
 getData(todourl).then(data => log(data)) */
 
 /* promise 包装xhr */
-function getData(url) {
+/* function getData(url) {
   const promise = new Promise((resolve, reject) => {
     const handler = function () {
       if (this.readyState !== 4) return 
@@ -328,7 +328,33 @@ function getData(url) {
   return promise
 }
 
-getData(todourl).then(data => log(data))
+getData(todourl).then(data => log(data)) */
+
+/* promise 异步加载图片 */
+function loadImgAsync(url) {
+  const promise = new Promise((resolve, reject) => {
+    const img = document.createElement('img')
+    img.onload = () => {
+      resolve(img)
+    }
+    img.onerror = () => {
+      const err = new Error(`图片加载失败：${url}`)
+      reject(err)
+    }
+    img.src = url
+  })
+  return promise
+}
+loadImgAsync(imgurl).then(img => {
+  log(img.width)
+}).catch(err => {
+  log(err)
+})
+loadImgAsync('imgurl').then(img => {
+  log(img.width)
+}).catch(err => {
+  log(err)
+})
 
 /* Generator */
 
