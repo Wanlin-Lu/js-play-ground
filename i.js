@@ -531,7 +531,7 @@ log(rflat(arr)) */
  * ! async/await
  */
 /* 休眠语法 */
-function sleep(interval) {
+/* function sleep(interval) {
   return new Promise((resolve, reject) => {
     setTimeout(resolve,interval)
   })
@@ -542,7 +542,7 @@ async function one2five() {
     await sleep(1000)
   }
 }
-one2five()
+one2five() */
 
 /* async/await 调用 promise-异步加载图片 */
 /* function loadImgAsync(url) {
@@ -570,6 +570,28 @@ one2five()
     console.error(err)
   }
 })() */
+
+/* async/await | map | for-of 实现并发，顺序输出 */
+async function loadOder(urls) {
+  for (let url of urls) {
+    const response = await fetch(url)
+    log(await response.json())
+  }
+}
+// loadOder(todoUrls)
+
+async function loadOderBF(urls) {
+  const JSONpromises = urls.map(async url => {
+    const promise = await fetch(url)
+    return promise.json()
+  })
+
+  for (let promise of JSONpromises) {
+    log( await promise)
+  }
+}
+loadOderBF(todoUrls)
+
 
 /* async/await ---> await */
 /* async function fun() {
