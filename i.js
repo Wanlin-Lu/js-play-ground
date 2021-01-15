@@ -96,7 +96,7 @@ log(myInstanceof([1,2],Array)) */
 /**
  * !函数进阶
  */
-function func(a, b, c) {
+/* function func(a, b, c) {
   return a + b + c
 }
 function func1(a) {
@@ -109,7 +109,7 @@ function func1(a) {
 let func2 = a => b => c => a + b + c
 log(func(1, 2, 3))
 log(func1(1)(2)(3))
-log(func2(1)(2)(3))
+log(func2(1)(2)(3)) */
 
 /**
  * !变量作用域进阶
@@ -498,6 +498,34 @@ function runWithoutPromise(gen) {
   }
 }
 runWithoutPromise(generator1) */
+
+/* Generator flat 数组 */
+let flat = function* (arr) {
+  let len = arr.length
+  for (let i = 0; i < len; i++) {
+    if (arr[i] instanceof Array) {
+      yield* flat(arr[i])
+    } else {
+      yield arr[i]
+    }
+  }
+}
+let arr = [1, [2, [3, [4], [5, 6], [7, 8]]]]
+log(flat(arr))
+log([...flat(arr)])
+
+for (let v of flat(arr)) {
+  log(v)
+}
+
+function rflat(arr) {
+  let newarr = []
+  for (let v of flat(arr)) {
+    newarr.push(v)
+  }
+  return newarr
+}
+log(rflat(arr))
 
 /**
  * ! async/await
