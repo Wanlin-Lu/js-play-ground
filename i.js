@@ -11,16 +11,27 @@ const imgurl = `https://adom-wanlinlu-blog.oss-cn-hangzhou.aliyuncs.com/avatar.p
 
 /**
  * ! js语言基础
+ * * js语言的根本
+ * TODO 掌握
  */
-
-/* 操作符和表达式 */
+/**
+ * !操作符和表达式
+ */
  
-/* 语句 */
-
-/* 
- * js 数据类型
+/**
+ * !语句
  */
-/* 数值 */
+
+/** 
+ * !js 数据类型
+ * * js语言的基础
+ * TODO 掌握所有数据类型的方法
+ */
+
+/**
+ * !数值
+ */
+
 /**
  * !字符串
  */
@@ -68,7 +79,10 @@ function mostFrequentOne(str) {
 }
 mostFrequentOne(str) */
 
-/* 对象 */
+/**
+ * !对象
+ */
+
 /**
  * !数组
  */
@@ -126,8 +140,14 @@ arrMostFrequent(arr) */
 }
 mostFrequentOne(arr) */
 
-/* 函数 */
-/* Date日期 */
+/**
+ * !函数
+ */
+
+/**
+ * !Date日期
+ */
+
 /**
  * !正则表达式 
  */
@@ -249,6 +269,34 @@ log(Object.is(obj1,obj2)) */
 /**
  * !函数进阶
  */
+/* 封装函数 f，使 f 的 this 指向指定的对象 */
+function bindThis(f, oTarget) {
+  return function () {
+    let args = [].slice.call(arguments)
+    return f.apply(oTarget, args)
+  }
+}
+
+function bindThis(f, oTarget) {
+  return function () {
+    let args = [].slice.call(arguments)
+    return f.call(oTarget, ...args)
+  }
+}
+
+function bindThis(f, oTarget) {
+  return f.bind(oTarget)
+}
+
+function bindThis(f, oTarget) {
+  oTarget.fn = f
+  return function () {
+    let args = [].slice.call(arguments)
+    return oTarget.fn(...args)
+  }
+}
+
+/* 函数柯里化 */
 /* function func(a, b, c) {
   return a + b + c
 }
