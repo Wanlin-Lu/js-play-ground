@@ -30,7 +30,7 @@ const imgurl = `https://adom-wanlinlu-blog.oss-cn-hangzhou.aliyuncs.com/avatar.p
  * !正则表达式 
  */
 /* 数字千分位分隔符 */
-let number = 999888777666.555
+/* let number = 999888777666.555
 function commafy(num) {
   return num && num.toString().replace(
     /(\d)(?=(\d{3})+\.)/g, function ($1, $2) {
@@ -38,7 +38,7 @@ function commafy(num) {
     }
   )
 }
-log(commafy(number))
+log(commafy(number)) */
 
 /* JSON */
 /* Symbol */
@@ -93,7 +93,23 @@ log(arr) //[1000,2,3] */
 
 log(myInstanceof([1,2],Array)) */
 
-/* 函数进阶 */
+/**
+ * !函数进阶
+ */
+function func(a, b, c) {
+  return a + b + c
+}
+function func1(a) {
+  return function (b) {
+    return function (c) {
+      return a + b + c
+    }
+  }
+}
+let func2 = a => b => c => a + b + c
+log(func(1, 2, 3))
+log(func1(1)(2)(3))
+log(func2(1)(2)(3))
 
 /* 变量作用域进阶 */
 /* this -> 箭头函数 */
