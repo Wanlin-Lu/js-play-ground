@@ -319,7 +319,16 @@ $p.on('click', () => alert('click'))  */
 /**
  * !变量的解构赋值
  */
-
+/* fibonacci */
+function fibonacci(n) {
+  if(n === 1 || n === 2) return 1
+  let [a, b] = [1, 1]
+  for (let i = 2; i < n; i++) {
+    [a,b] = [b, a+b]
+  }
+  return b
+}
+log(fibonacci(9)) //34
 
 /**
  * !Iterator(遍历器)和for-of循环
@@ -684,7 +693,7 @@ setTimeout(() => {
  * !DOM事件
  */
 /* 通用的事件绑定函数 */
-function bindEvent(elem, type, selector, fn) {
+/* function bindEvent(elem, type, selector, fn) {
   if (fn == null) {
     fn = selector
     selector = null
@@ -705,5 +714,9 @@ const pb = document.getElementById('pbox')
 const cb = document.getElementById('cbox')
 const items = cb.getElementsByClassName('list')
 bindEvent(items[0], 'click', e => log('li clicked'))
-bindEvent(pb,'click','li', e => log('li clicked, delegate.'))
+bindEvent(pb,'click','li', e => log('li clicked, delegate.')) */
+
+/**
+ * ! chalenge
+ */
 
