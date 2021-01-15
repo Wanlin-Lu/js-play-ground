@@ -500,7 +500,7 @@ function runWithoutPromise(gen) {
 runWithoutPromise(generator1) */
 
 /* Generator flat 数组 */
-let flat = function* (arr) {
+/* let flat = function* (arr) {
   let len = arr.length
   for (let i = 0; i < len; i++) {
     if (arr[i] instanceof Array) {
@@ -525,11 +525,25 @@ function rflat(arr) {
   }
   return newarr
 }
-log(rflat(arr))
+log(rflat(arr)) */
 
 /**
  * ! async/await
  */
+/* 休眠语法 */
+function sleep(interval) {
+  return new Promise((resolve, reject) => {
+    setTimeout(resolve,interval)
+  })
+}
+async function one2five() {
+  for (let i = 1; i < 6; i++) {
+    log(i) 
+    await sleep(1000)
+  }
+}
+one2five()
+
 /* async/await 调用 promise-异步加载图片 */
 /* function loadImgAsync(url) {
   const promise = new Promise((resolve, reject) => {
