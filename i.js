@@ -41,7 +41,7 @@ log(res) */
 
 /* 数组中出现次数最多的三个 */
 let arr = ['a', 'x', 'b', 'd', 'm', 'a', 'k', 'm', 'p', 'j', 'a']
-function arrMostFrequent(arr) {
+/* function arrMostFrequent(arr) {
   var result = {}
 
   arr.forEach(function (item, index) {
@@ -61,7 +61,24 @@ function arrMostFrequent(arr) {
   log(maxChar)
   log(maxChar.slice(0, 3))
 }
-arrMostFrequent(arr)
+arrMostFrequent(arr) */
+
+/* 数组中出现次数最多的一个 */
+/* function mostFrequentOne(arr) {
+  let obj = {}
+  let max = null
+  let maxnum = 1
+  for (let i = 0; i < arr.length; i++) {
+    var a = arr[i]
+    obj[a] === undefined ? obj[a] = 1 : obj[a]++
+    if (obj[a] > maxnum) {
+      max = a
+      maxnum = obj[a]
+    }
+  }
+  log(max,":",maxnum)
+}
+mostFrequentOne(arr) */
 
 /* 函数 */
 /* Date日期 */
