@@ -111,7 +111,9 @@ log(func(1, 2, 3))
 log(func1(1)(2)(3))
 log(func2(1)(2)(3))
 
-/* 变量作用域进阶 */
+/**
+ * !变量作用域进阶
+ */
 /* this -> 箭头函数 */
 /* const zhangsan = {
   name: 'zhangsan',
@@ -314,11 +316,13 @@ log($p.get(1))
 $p.each((elem) => log(elem.nodeName))
 $p.on('click', () => alert('click'))  */
 
-/* 变量的解构赋值 */
+/**
+ * !变量的解构赋值
+ */
 
 
 /**
- * ! Iterator(遍历器)和for-of循环
+ * !Iterator(遍历器)和for-of循环
  */
 /* for-of vs forEach */
 /* function muti(num) {
@@ -350,6 +354,23 @@ test2() */
 /**
  * ! Proxy & Reflect
  */
+/* 最简单的观察者模式 */
+/* let queuedObservers = new Set()
+let observe = fn => queuedObservers.add(fn)
+let observable = obj => new Proxy(obj, { set })
+function set(target, key, value, receiver) {
+  const result = Reflect.set(target, key, value, receiver)
+  queuedObservers.forEach(observer => observer())
+  return result
+}
+
+let obj = {}
+let print = function () { log('printed') }
+
+observe(print)
+let obj1 = observable(obj)
+obj1.name = 'asang'
+log(obj1.name) */
 
 /**
  * ! Promise
