@@ -572,7 +572,7 @@ one2five() */
 })() */
 
 /* async/await | map | for-of 实现并发，顺序输出 */
-async function loadOder(urls) {
+/* async function loadOder(urls) {
   for (let url of urls) {
     const response = await fetch(url)
     log(await response.json())
@@ -590,7 +590,7 @@ async function loadOderBF(urls) {
     log( await promise)
   }
 }
-loadOderBF(todoUrls)
+loadOderBF(todoUrls) */
 
 
 /* async/await ---> await */
@@ -675,3 +675,35 @@ setTimeout(() => {
 
 
 /* play-ground */
+
+/**
+ * !DOM树
+ */
+
+/**
+ * !DOM事件
+ */
+/* 通用的事件绑定函数 */
+function bindEvent(elem, type, selector, fn) {
+  if (fn == null) {
+    fn = selector
+    selector = null
+  }
+
+  elem.addEventListener(type, event => {
+    const target = event.target
+    if (selector) {
+      if (target.matches(selector)) {
+        fn.call(target, event)
+      }
+    } else {
+      fn.call(target, event)
+    }
+  })
+}
+const pb = document.getElementById('pbox')
+const cb = document.getElementById('cbox')
+const items = cb.getElementsByClassName('list')
+bindEvent(items[0], 'click', e => log('li clicked'))
+bindEvent(pb,'click','li', e => log('li clicked, delegate.'))
+
