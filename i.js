@@ -9,8 +9,8 @@ let todoUrls = [
 ]
 const imgurl = `https://adom-wanlinlu-blog.oss-cn-hangzhou.aliyuncs.com/avatar.png`;
 
-/*
- *js语言基础
+/**
+ * ! js语言基础
  */
 
 /* 操作符和表达式 */
@@ -322,7 +322,9 @@ test2() */
  * ! Proxy & Reflect
  */
 
-/* Promise */
+/**
+ * ! Promise
+ */
 /* promise 包装Ajax */
 /* function getData(url) {
   return new Promise((resolve, reject) => {
@@ -360,13 +362,15 @@ getData(todourl).then(data => log(data)) */
   })
   return promise
 }
-
 getData(todourl).then(data => log(data)) */
 
-/**
- * !NUM 2 
- * promise 异步加载图片
- */
+/* Promise.all */
+/* const promises = [1, 2, 3, 4, 5].map((id) =>
+  getData(`https://jsonplaceholder.typicode.com/todos/${id}`)
+)
+Promise.all(promises).then(jsons => jsons.forEach(json => log(json))).catch(err => console.error(error)); */
+
+/* promise 异步加载图片 */
 /* function loadImgAsync(url) {
   const promise = new Promise((resolve, reject) => {
     const img = document.createElement('img')
@@ -495,7 +499,7 @@ setTimeout(() => {
 }); */
 
 /* 微任务/宏任务/DOM渲染 */
-const $p1 = $('<p>一段文字</p>')
+/* const $p1 = $('<p>一段文字</p>')
 const $p2 = $('<p>一段文字</p>')
 const $p3 = $('<p>一段文字</p>')
 $('#root').append($p1).append($p2).append($p3)
@@ -508,7 +512,7 @@ Promise.resolve().then(() => {
 setTimeout(() => {
   const length = $('#root').children().length
   alert(`宏任务 完成，${length}`)
-}) 
+})  */
 
 
 /* play-ground */
