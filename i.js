@@ -26,7 +26,20 @@ const imgurl = `https://adom-wanlinlu-blog.oss-cn-hangzhou.aliyuncs.com/avatar.p
 /* 数组 */
 /* 函数 */
 /* Date日期 */
-/* 正则表达式 */
+/**
+ * !正则表达式 
+ */
+/* 数字千分位分隔符 */
+let number = 999888777666.555
+function commafy(num) {
+  return num && num.toString().replace(
+    /(\d)(?=(\d{3})+\.)/g, function ($1, $2) {
+      return $2 + ','
+    }
+  )
+}
+log(commafy(number))
+
 /* JSON */
 /* Symbol */
 /* Set & WeakSet */
