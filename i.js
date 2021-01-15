@@ -400,9 +400,54 @@ loadImgAsync('imgurl').then(img => {
  * ! Generator
  * * 异步状态机
  * TODO 继续学习
- * @param todourls
- * @param imgurl
  */
+/* Generator 和自动执行器 */
+/* function getFoo() {
+  return new Promise((resolve, reject) => {
+    resolve('luwanlin')
+  })
+}
+function* myGenerator() {
+  try {
+    const foo = yield getFoo()
+    console.log(foo)
+  } catch (err) {
+    console.error(err)
+  }
+}
+let mg = myGenerator()
+mg.next().value.then(data => log(data))
+mg.next().value.then(data => log(data))
+
+
+function run(gen) {
+  let it = gen()
+  function go(result) {
+    if (result.done) return result.value
+    return result.value.then(value => {
+      return go(it.next(value))
+    }).catch(err => go(it.throw(e)))
+  }
+  go(it.next())
+}
+run(myGenerator) */
+
+/* 没有异步的Generator，自动执行 */
+/* let generator1 = function* () {
+  yield 1
+  yield* [2, 3, 4]
+  yield 5
+}
+
+function runWithoutPromise(gen) {
+  let it = gen()
+  let res = it.next()
+  while (!res.done) {
+    log(res.value)
+    res = it.next()
+  }
+}
+runWithoutPromise(generator1) */
 
 /**
  * ! async/await
