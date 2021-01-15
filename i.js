@@ -21,7 +21,53 @@ const imgurl = `https://adom-wanlinlu-blog.oss-cn-hangzhou.aliyuncs.com/avatar.p
  * js 数据类型
  */
 /* 数值 */
-/* 字符串 */
+/**
+ * !字符串
+ */
+/* 字符串中出现的最频繁的一个, 方法1 */
+/* let str = 'aaaaaaaaaabbbbbbccccccc'
+function mostFrequentOne(str) {
+  let arrFromStr = str.split('')
+  let obj = {}
+  for (let v of arrFromStr) {
+    if (!obj[v]) {
+      obj[v] = 1
+    } else {
+      obj[v] ++
+    }
+  }
+  
+  var maxLetter = ''
+  let maxnum = 1
+  for (let k in obj) {
+    if (obj[k] > maxnum) {
+      maxnum = obj[k]
+      maxLetter = k
+    }
+  }
+
+  log(maxLetter,":",maxnum)
+}
+mostFrequentOne(str) */
+
+/* 字符串中出现的最频繁的一个, 方法2 */
+/* let str = 'aaaaaaaaaabbbbbbccccccc'
+function mostFrequentOne(str) {
+  let arrFromStr = str.split('')
+  let obj = {}
+  for (let v of arrFromStr) {
+    obj[v] === undefined ? (obj[v] = 1) : obj[v]++
+  }
+
+  let mostChar = Object.keys(obj).sort((a, b) => {
+    return obj[b] - obj[a]
+  })
+
+  let mc = mostChar.slice(0,1)
+  log(mc,':',obj[mc])
+}
+mostFrequentOne(str) */
+
 /* 对象 */
 /**
  * !数组
@@ -40,7 +86,7 @@ const res = flaten([1, 3, [2, 3, 4, [5, 6, [7, 8]], [2, 3, [56]]]])
 log(res) */
 
 /* 数组中出现次数最多的三个 */
-let arr = ['a', 'x', 'b', 'd', 'm', 'a', 'k', 'm', 'p', 'j', 'a']
+/* let arr = ['a', 'x', 'b', 'd', 'm', 'a', 'k', 'm', 'p', 'j', 'a'] */
 /* function arrMostFrequent(arr) {
   var result = {}
 
