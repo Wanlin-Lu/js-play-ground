@@ -27,7 +27,7 @@ const imgurl = `https://adom-wanlinlu-blog.oss-cn-hangzhou.aliyuncs.com/avatar.p
  * !数组
  */
 /* 数组 flat */
-function flaten(arr) {
+/* function flaten(arr) {
   const isDeep = arr.some(item => item instanceof Array)
   if (!isDeep) {
     return arr
@@ -37,7 +37,7 @@ function flaten(arr) {
   return flaten(res)
 }
 const res = flaten([1, 3, [2, 3, 4, [5, 6, [7, 8]], [2, 3, [56]]]])
-log(res)
+log(res) */
 
 /* 函数 */
 /* Date日期 */
@@ -60,10 +60,12 @@ log(commafy(number)) */
 /* Set & WeakSet */
 /* Map & WeakMap */
 
-/* 
- * js 进阶
+/**
+ * ! js 进阶
  */
-/* 类型进阶 */
+/**
+ * !类型进阶 
+ */
 /* deepClone */
 /* function deepClone(obj) {
   if (typeof obj !== 'object' || obj == null) {
@@ -107,6 +109,55 @@ log(arr) //[1000,2,3] */
 }
 
 log(myInstanceof([1,2],Array)) */
+
+/* 手写isEqual */
+function isEqual(obj1, obj2) {
+  function isObject(obj) {
+    return typeof obj === 'object' && obj !== null
+  }
+
+  if (!isObject(obj1) || !isObject(obj2)) {
+    return obj1 === obj2
+  }
+
+  if (obj1 === obj2) {
+    return true
+  }
+
+  const obj1Keys = Object.keys(obj1)
+  const obj2Keys = Object.keys(obj2)
+
+  if (obj1Keys !== obj2Keys) {
+    return false
+  }
+
+  for (let key in obj1) {
+    const res = isEqual(obj1[key], obj2[key])
+    if (!res) {
+      return false
+    }
+  }
+
+  return true
+}
+const obj1 = {
+  a: 100,
+  b: {
+    x: 200,
+    y: 300,
+  },
+}
+const obj2 = {
+  a: 100,
+  b: {
+    x: 200,
+    y: 300,
+  },
+  c: 3000,
+}
+log(isEqual(obj1, obj2))
+log(Object.is(obj1,obj2))
+
 
 /**
  * !函数进阶
