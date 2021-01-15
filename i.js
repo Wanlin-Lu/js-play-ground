@@ -23,7 +23,22 @@ const imgurl = `https://adom-wanlinlu-blog.oss-cn-hangzhou.aliyuncs.com/avatar.p
 /* 数值 */
 /* 字符串 */
 /* 对象 */
-/* 数组 */
+/**
+ * !数组
+ */
+/* 数组 flat */
+function flaten(arr) {
+  const isDeep = arr.some(item => item instanceof Array)
+  if (!isDeep) {
+    return arr
+  }
+
+  const res = Array.prototype.concat.apply([], arr)
+  return flaten(res)
+}
+const res = flaten([1, 3, [2, 3, 4, [5, 6, [7, 8]], [2, 3, [56]]]])
+log(res)
+
 /* 函数 */
 /* Date日期 */
 /**
@@ -320,7 +335,7 @@ $p.on('click', () => alert('click'))  */
  * !变量的解构赋值
  */
 /* fibonacci */
-function fibonacci(n) {
+/* function fibonacci(n) {
   if(n === 1 || n === 2) return 1
   let [a, b] = [1, 1]
   for (let i = 2; i < n; i++) {
@@ -328,7 +343,7 @@ function fibonacci(n) {
   }
   return b
 }
-log(fibonacci(9)) //34
+log(fibonacci(9)) //34 */
 
 /**
  * !Iterator(遍历器)和for-of循环
