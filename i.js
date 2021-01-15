@@ -39,6 +39,30 @@ const imgurl = `https://adom-wanlinlu-blog.oss-cn-hangzhou.aliyuncs.com/avatar.p
 const res = flaten([1, 3, [2, 3, 4, [5, 6, [7, 8]], [2, 3, [56]]]])
 log(res) */
 
+/* 数组中出现次数最多的三个 */
+let arr = ['a', 'x', 'b', 'd', 'm', 'a', 'k', 'm', 'p', 'j', 'a']
+function arrMostFrequent(arr) {
+  var result = {}
+
+  arr.forEach(function (item, index) {
+    var key = result[item]
+    if (key) {
+      key.num += 1
+      key.position.push(index)
+    } else {
+      result[item] = { num: 1, position: [index] }
+    }
+  })
+
+  // log(result)
+  var maxChar = Object.keys(result).sort(function (a, b) {
+    return result[b].num - result[a].num
+  })
+  log(maxChar)
+  log(maxChar.slice(0, 3))
+}
+arrMostFrequent(arr)
+
 /* 函数 */
 /* Date日期 */
 /**
@@ -111,7 +135,7 @@ log(arr) //[1000,2,3] */
 log(myInstanceof([1,2],Array)) */
 
 /* 手写isEqual */
-function isEqual(obj1, obj2) {
+/* function isEqual(obj1, obj2) {
   function isObject(obj) {
     return typeof obj === 'object' && obj !== null
   }
@@ -156,7 +180,7 @@ const obj2 = {
   c: 3000,
 }
 log(isEqual(obj1, obj2))
-log(Object.is(obj1,obj2))
+log(Object.is(obj1,obj2)) */
 
 
 /**
